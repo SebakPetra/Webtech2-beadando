@@ -1,0 +1,73 @@
+<mat-card>
+
+    <mat-card-title align="center">Új termék</mat-card-title>
+
+    <form [formGroup]="galaFormGroup">
+        <div class="row">
+            <mat-form-field appearance="fill" class="col-lg-8">
+                <mat-label>Gála neve</mat-label>
+                <input type="text" matInput formControlName="title">
+            </mat-form-field>
+            <div *ngIf="galaFormGroup.controls.title.touched === true">
+                <mat-error *ngIf="galaFormGroup.controls.title.hasError('required')">
+                    Mező kitöltése kötelező
+                </mat-error>
+                <mat-error *ngIf="galaFormGroup.controls.title.hasError('maxlength')">
+                    A megadott input maximum 20 karakter lehet!
+                </mat-error>
+            </div>
+            <mat-form-field appearance="fill" class="col-lg-8">
+                <mat-label>Szervező</mat-label>
+                <input type="text" matInput formControlName="organizer">
+            </mat-form-field>
+            <div *ngIf="galaFormGroup.controls.organizer.touched === true">
+                <mat-error *ngIf="galaFormGroup.controls.organizer.hasError('required')">
+                    Mező kitöltése kötelező
+                </mat-error>
+                <mat-error *ngIf="galaFormGroup.controls.organizer.hasError('maxlength')">
+                    A megadott input maximum 20 karakter lehet!
+                </mat-error>
+            </div>
+            <mat-form-field class="example-full-width" appearance="fill" class="col-lg-8">
+                <mat-label>Időpont</mat-label>
+                <input matInput [matDatepicker]="picker" formControlName="date">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker touchUi #picker></mat-datepicker>
+            </mat-form-field>
+            <div *ngIf="galaFormGroup.controls.date.touched === true">
+                <mat-error *ngIf="galaFormGroup.controls.date.hasError('required')">
+                    Mező kitöltése kötelező
+                </mat-error>
+                <mat-error *ngIf="galaFormGroup.controls.date.hasError('maxlength')">
+                    A megadott input maximum 20 karakter lehet!
+                </mat-error>
+            </div>
+
+            <mat-form-field appearance="fill" class="col-lg-8">
+                <mat-label>Belépő</mat-label>
+                <input type="number" matInput formControlName="price">
+            </mat-form-field>
+            <div *ngIf="galaFormGroup.controls.price.touched === true">
+                <mat-error *ngIf="galaFormGroup.controls.price.hasError('required')">
+                    Mező kitöltése kötelező
+                </mat-error>
+            </div>
+
+            <mat-form-field appearance="fill" class="col-lg-8">
+                <mat-label>Férőhely</mat-label>
+                <input type="number" matInput formControlName="sitting">
+            </mat-form-field>
+            <div *ngIf="galaFormGroup.controls.sitting.touched === true">
+                <mat-error *ngIf="galaFormGroup.controls.sitting.hasError('required')">
+                    Mező kitöltése kötelező
+                </mat-error>
+            </div>
+        </div>
+        <div>
+            <button mat-raised-button matDialogClose>Vissza</button>
+            <button color="primary" [disabled]="!galaFormGroup.valid" (click)="createProduct()" mat-raised-button
+                matDialogClose class="buttonColorize">Létrehozás</button>
+        </div>
+    </form>
+
+</mat-card>
