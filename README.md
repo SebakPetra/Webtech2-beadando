@@ -13,7 +13,7 @@ node server.js
 
 #Angular
 
-cd api/frontend
+cd frontend/Api
 npm install
 ng serve
 
