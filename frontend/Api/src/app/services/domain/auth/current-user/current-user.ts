@@ -4,7 +4,7 @@ export interface CurrentUser {
     username?: string;
     role?: number;
 }
-const STORAGE_KEY = 'currentUser';
+const STORAGE_KEY = 'CurrentUser';
 
 export class CurrentUserProfileModel {
     username?: string;
@@ -15,7 +15,7 @@ export class CurrentUserProfileModel {
 
         if (stored) {
             stored = atob(stored);
-            const userProfile = JSON.parse(decodeURIComponent(escape(stored)));
+            const userProfile = JSON.parse(decodeURIComponent(unescape(stored)));
             Object.assign(this, userProfile);
         }
     }
